@@ -17,6 +17,7 @@ public class CustomConsumer {
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,"nn1.hadoop:9092");
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class.getName());
+        properties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG,"false");
         
         properties.put(ConsumerConfig.GROUP_ID_CONFIG,"1205");
         
@@ -32,6 +33,9 @@ public class CustomConsumer {
                  ) {
                 System.out.println("topic="+record.topic()+" offset=" + record.offset()+" value="+record.value());
             }
+            //5.提交offset
+            consumer.commitSync();//同步提交
+//            consumer.commitAsync();//异步提交
         }
         
     }
