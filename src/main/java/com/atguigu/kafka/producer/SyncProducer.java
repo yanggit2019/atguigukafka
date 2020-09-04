@@ -19,7 +19,7 @@ public class SyncProducer {
 
         properties.put(ProducerConfig.ACKS_CONFIG,"all");
         properties.put(ProducerConfig.BATCH_SIZE_CONFIG,16384);
-        properties.put(ProducerConfig.LINGER_MS_CONFIG,1);
+        properties.put(ProducerConfig.LINGER_MS_CONFIG,1000);
         //1.创建一个生产者对象
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
         //2.send方法
